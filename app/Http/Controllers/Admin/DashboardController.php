@@ -9,6 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        echo 'Admin\DashboardController@index';
+        return view('admin.dashboard.index');
     }
 }
