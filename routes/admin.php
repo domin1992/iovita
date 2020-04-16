@@ -21,4 +21,5 @@ Route::get('password/reset/{token}', 'AuthAdmin\ResetPasswordController@showRese
 
 Route::middleware('auth:admin')->group(function(){
     Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
+    Route::resource('post', 'Admin\PostController', ['as' => 'admin']);
 });

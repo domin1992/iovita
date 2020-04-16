@@ -65,12 +65,26 @@
         </header>
         <aside class="main-sidebar">
             <section class="sidebar">
-                <ul class="sidebar-menu">
+                <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MENU</li>
-                    <li{{ ('admin.dashboard' == Route::currentRouteName() ? ' class=active' : '') }}>
+                    <li{{ str_contains(Route::currentRouteName(), 'admin.dashboard') ? ' class=active' : '' }}>
                         <a href="{{ route('admin.dashboard') }}">
                             <i class="fa fa-dashboard"></i> <span>Pulpit</span>
                         </a>
+                    </li>
+                    <li class="treeview{{ str_contains(Route::currentRouteName(), 'admin.post.') ? ' active' : '' }}">
+                        <a href="#">
+                            <i class="fa fa-file-text-o"></i>
+                            <span>Wpisy</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li{{ str_contains(Route::currentRouteName(), 'admin.post.index') ? ' class=active' : '' }}><a href="{{ route('admin.post.index') }}"><i class="fa fa-angle-double-right"></i> Wszystkie wpisy</a></li>
+                            <li{{ str_contains(Route::currentRouteName(), 'admin.post.create') ? ' class=active' : '' }}><a href="{{ route('admin.post.create') }}"><i class="fa fa-angle-double-right"></i> Nowy wpis</a></li>
+                            <li{{ str_contains(Route::currentRouteName(), 'admin.post.create') ? ' class=active' : '' }}><a href="{{ route('admin.post.create') }}"><i class="fa fa-angle-double-right"></i> Kategorie</a></li>
+                        </ul>
                     </li>
                 </ul>
             </section>
